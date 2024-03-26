@@ -1,0 +1,72 @@
+---
+const PROJECTS = [
+  {
+    title: "Cálculo de Producible",
+    description:
+      "El proyecto fue un programa informático para calcular y analizar la producción histórica de plantas solares en Chile, brindando a los usuarios una visión detallada del rendimiento energético de estas instalaciones a lo largo del tiempo.",
+    link: "https://google.com",
+    github: "https://github.com",
+    image: "/projects/calculoProducible.webp",
+    tags: ["Python", "Excel"],
+  },
+  {
+    title: "El Buen Sabor",
+    description:
+      "El proyecto fue una plataforma de comercio electrónico para comida rápida, diseñada para brindar una experiencia fluida para clientes y distintos roles internos como administrador, cocinero, cliente, delivery y cajero.",
+    link: "https://google.com",
+    github: "https://github.com",
+    image: "https://picsum.photos/200/300",
+    tags: ["TypeScript", "React", "Spring Boot", "MySQL"],
+  },
+  {
+    title: "Damas Gratis",
+    description:
+      "Juego de damas donde los jugadores compiten contra una IA que utiliza el algoritmo Minimax para tomar decisiones estratégicas. Ofrece tres niveles de dificultad para adaptarse a diferentes habilidades de los jugadores.",
+    link: "https://google.com",
+    github: "https://github.com",
+    image: "/projects/damas.webp",
+    tags: ["Python", "Pygame"],
+  },
+  {
+    title: "Avengers Quiz",
+    description:
+      "Página Web para entretener y desafiar a los fans del MCU. Su objetivo es poner a prueba el conocimiento sobre las películas de Avengers, incluyendo detalles de personajes, tramas y curiosidades del universo Marvel.",
+    link: "https://google.com",
+    github: "https://github.com",
+    image: "/projects/avengers.webp",
+    tags: ["React", "TypeScript", "Vite"],
+  },
+];
+---
+
+<div class="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2">
+  {
+    PROJECTS.map((project) => (
+      <>
+        <div class="max-w-sm bg-[#0f1729] rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+          <img
+            class="hover:scale-105 transition duration-300 rounded-lg rounded-t-3xl h-60 w-full object-cover"
+            src={project.image}
+            alt=""
+            loading="lazy"
+          />
+          <div class="p-5">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-blue-500 dark:text-white">
+              {project.title}{" "}
+            </h5>
+            <p class="mb-3 font-normal text-white-700 dark:text-gray-400">
+              {project.description}
+            </p>
+            <ul class="flex gap-1 flex-wrap text-sm mt-4">
+              {project.tags.map((tag) => (
+                <li class="rounded-full px-2 border-dark-200 dark:border-dark-800 bg-dark-300/60 dark:bg-primary-900/30 backdrop-blur-sm text-dark-700 dark:text-dark-200 bg-blue-500">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </>
+    ))
+  }
+</div>

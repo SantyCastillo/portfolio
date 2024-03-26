@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import Projects from "../components/Projects.astro";
+import Hero from "../components/Hero.astro";
+import Tecnologies from "../components/Tecnologies.astro";
+
+---
+
+<Layout
+  title="Portfolio de Santiago Castillo"
+  description="Desarrollador web full stack en constante aprendizaje"
+>
+  <main class="px-4">
+    <SectionContainer class="py-40 pb-32">
+      <Hero />
+    </SectionContainer>
+    <SectionContainer id="projects">
+      <h2 class="text-3xl font-semibold mb-2 flex gap-x-3 items-center">
+        Proyectos
+      </h2>
+      <hr class="border-b-2 border-blue-500 mb-6" />
+      <Projects />
+    </SectionContainer>
+    <SectionContainer id="tecnologies">
+      <h2 class="text-3xl font-semibold mb-2 flex gap-x-3 items-center">
+        Tecnologías
+      </h2>
+      <hr class="border-b-2 border-blue-500 mb-6" />
+      <Tecnologies />
+    </SectionContainer>
+  </main>
+</Layout>

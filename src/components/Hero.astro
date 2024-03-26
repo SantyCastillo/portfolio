@@ -1,0 +1,43 @@
+---
+import SocialPill from "./SocialPill.astro";
+import LinkedInIcon from "../components/icons/LinkedIn.astro";
+import GithubIcon from "../components/icons/Github.astro";
+import PdfIcon from "../components/icons/Document.astro";
+---
+
+<div class="max-w-xl">
+  <div class="flex gap-4 mb-2">
+    <span class="opacity-80">Hello World! 🌐</span>
+  </div>
+  <div>
+    <h1
+      class="tracking-tight text-blue-500 md:text-4xl lg:text-5xl font-bold animate-pulse"
+    >
+     Santiago Castillo
+    </h1>
+  </div>
+  <div class="flex gap-4 mt-2">
+    <span class="opacity-80">Tec. Universitario en Programación</span>
+  </div>
+  <div class="text-pretty flex gap-4 mt-4">
+    <p>
+      <span class="text-blue-500">Desarrollador apasionado</span> con experiencia
+      en programación y <span class="text-blue-500">desarrollo web.</span> Tengo
+      habilidades de aprendizaje rápido y me adapto fácilmente a nuevas
+      <span class="text-blue-500">tecnologías y enfoques</span>.
+    </p>
+  </div>
+  <div>
+    <nav class="flex gap-4 mt-8 flex-wrap">
+      <SocialPill href="https://www.linkedin.com/in/santy-castillo-420284212">
+        <LinkedInIcon class="size-4 md:size-6" />LinkedIn
+      </SocialPill>
+      <SocialPill href="https://github.com/SantyCastillo">
+        <GithubIcon class="size-4 md:size-6" />Github
+      </SocialPill>
+      <SocialPill href="https://raw.githubusercontent.com/SantyCastillo/DamasGratis/main/requeriments.txt">
+        <PdfIcon class="size-4 md:size-6" />CV
+      </SocialPill>
+    </nav>
+  </div>
+</div>

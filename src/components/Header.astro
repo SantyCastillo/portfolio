@@ -1,0 +1,35 @@
+---
+const navItems = [
+  {
+    title: "Inicio",
+    link: "#top",
+  },
+  {
+    title: "Proyectos",
+    link: "#projects",
+  },
+  {
+    title: "Tecnologías",
+    link: "#tecnologies",
+  },
+  {
+    title: "Contacto",
+    link: "mailto:santy.castillo.00@gmail.com",
+  },
+];
+---
+
+<header class="flex justify-end py-5 w-full xl:w-[1620px] mx-auto">
+  <nav class="flex flex-row gap-x-8 opacity-90">
+    {
+      navItems.map((item) => (
+        <a
+          href={item.link}
+          class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-yellow-400"
+        >
+          {item.title}
+        </a>
+      ))
+    }
+  </nav>
+</header>
