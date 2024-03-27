@@ -4,8 +4,6 @@ const PROJECTS = [
     title: "Cálculo de Producible",
     description:
       "El proyecto fue un programa informático para calcular y analizar la producción histórica de plantas solares en Chile, brindando a los usuarios una visión detallada del rendimiento energético de estas instalaciones a lo largo del tiempo.",
-    link: "https://google.com",
-    github: "https://github.com",
     image: "/projects/calculoProducible.webp",
     tags: ["Python", "Excel"],
   },
@@ -13,8 +11,6 @@ const PROJECTS = [
     title: "El Buen Sabor",
     description:
       "El proyecto fue una plataforma de comercio electrónico para comida rápida, diseñada para brindar una experiencia fluida para clientes y distintos roles internos como administrador, cocinero, cliente, delivery y cajero.",
-    link: "https://google.com",
-    github: "https://github.com",
     image: "https://picsum.photos/200/300",
     tags: ["TypeScript", "React", "Spring Boot", "MySQL"],
   },
@@ -22,8 +18,6 @@ const PROJECTS = [
     title: "Damas Gratis",
     description:
       "Juego de damas donde los jugadores compiten contra una IA que utiliza el algoritmo Minimax para tomar decisiones estratégicas. Ofrece tres niveles de dificultad para adaptarse a diferentes habilidades de los jugadores.",
-    link: "https://google.com",
-    github: "https://github.com",
     image: "/projects/damas.webp",
     tags: ["Python", "Pygame"],
   },
@@ -31,8 +25,6 @@ const PROJECTS = [
     title: "Avengers Quiz",
     description:
       "Página Web para entretener y desafiar a los fans del MCU. Su objetivo es poner a prueba el conocimiento sobre las películas de Avengers, incluyendo detalles de personajes, tramas y curiosidades del universo Marvel.",
-    link: "https://google.com",
-    github: "https://github.com",
     image: "/projects/avengers.webp",
     tags: ["React", "TypeScript", "Vite"],
   },
@@ -43,7 +35,7 @@ const PROJECTS = [
   {
     PROJECTS.map((project) => (
       <>
-        <div class="max-w-sm bg-[#0f1729] rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
+        <div class="max-w-sm bg-[#F2F6FA] dark:bg-[#0f1729] rounded-3xl shadow dark:bg-gray-800 dark:border-gray-700">
           <img
             class="hover:scale-105 transition duration-300 rounded-lg rounded-t-3xl h-60 w-full object-cover"
             src={project.image}

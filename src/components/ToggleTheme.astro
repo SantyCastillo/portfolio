@@ -1,0 +1,106 @@
+---
+import SunIcon from "./icons/Sun.astro";
+import MoonIcon from "./icons/Moon.astro";
+---
+
+<div class="relative ml-1 mr-1 px-2 py-2">
+  <label class="inline-flex items-center cursor-pointer">
+    <input
+      type="checkbox"
+      value=""
+      class="sr-only peer"
+      id="theme-toggle-checkbox"
+    />
+
+    <div
+      class="relative w-16 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-8 rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] border after:absolute after:top-[2px] border-gray-400 after:start-[6px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
+    >
+      <MoonIcon
+        id="dark"
+        class="theme-toggle-icon absolute size-5 ml-1 mt-0.5 transition-all"
+      />
+      <SunIcon
+        id="light"
+        class="theme-toggle-icon ml-9 mt-0.5 absolute size-5 transition-all"
+      />
+    </div>
+  </label>
+</div>
+
+<style>
+  #themes-menu.open {
+    display: inline;
+    animation: scale-up-center 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+  @keyframes scale-up-center {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+</style>
+
+<script is:inline>
+  let remove = null;
+  const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
+  const themesMenu = document.getElementById("themes-menu");
+
+  const getThemePreference = () => {
+    if (typeof localStorage !== "undefined") {
+      return localStorage.getItem("theme") ?? "system";
+    }
+
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  };
+
+  const updateIcon = (themePreference) => {
+    document.getElementById("light").style.transform =
+      themePreference === "light" ? "scale(1)" : "scale(0)";
+    document.getElementById("dark").style.transform =
+      themePreference === "dark" ? "scale(1)" : "scale(0)";
+  };
+
+  const updateTheme = () => {
+    if (remove != null) {
+      remove();
+    }
+    matchMedia.addEventListener("change", updateTheme);
+    remove = () => {
+      matchMedia.removeEventListener("change", updateTheme);
+    };
+
+    const themePreference = getThemePreference();
+    const isDark =
+      themePreference === "dark" ||
+      (themePreference === "system" && matchMedia.matches);
+
+    updateIcon(themePreference);
+    document.documentElement.classList[isDark ? "add" : "remove"]("dark");
+  };
+
+  updateTheme();
+
+  document.addEventListener("click", () => themesMenu.classList.remove("open"));
+
+  document
+    .getElementById("theme-toggle-checkbox")
+    .addEventListener("click", (e) => {
+      localStorage.setItem("theme", e.target.checked ? "dark" : "light");
+      updateTheme();
+    });
+
+  document.querySelectorAll(".themes-menu-option").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      localStorage.setItem("theme", e.target.innerText.toLowerCase().trim());
+      updateTheme();
+    });
+  });
+</script>
