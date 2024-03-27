@@ -1,6 +1,6 @@
 ---
 import ToggleTheme from "./ToggleTheme.astro";
-
+import Menu from "./icons/Menu.astro";
 const navItems = [
   {
     title: "Inicio",
@@ -21,18 +21,39 @@ const navItems = [
 ];
 ---
 
-<header class="flex justify-end py-5 w-full xl:w-[1620px] mx-auto">
-    <nav  class="flex flex-row gap-x-8 opacity-90">
-      {
-        navItems.map((item) => (
-          <a
-            href={item.link}
-            class="relative block px-2 py-2 transition hover:text-blue-500 dark:hover:text-blue-500"
-          >
-            {item.title}
-          </a>
-        ))
-      }
-      <ToggleTheme />
-    </nav>
-</header>
+<nav class="sm:h-16 h-30 fixed w-full text-black dark:text-white backdrop-blur-md bg-dark-200/30 dark:bg-dark-900/30 fixed z-24 top-1 md:top-3 ">
+  <div class="container mx-auto px-1 md:flex items-center justify-between gap-6">
+    <div class="flex items-center justify-between w-full">
+      <a class="text-[#008dd4] text-3xl justify-center items-center font-black" href="/">{"{ Santy }"}</a>
+      <div class="md:hidden flex items-center gap-6">
+        <button type="button" class="mobile-menu-button">
+          <Menu />
+        </button>
+      </div>
+    </div>
+
+    <div class="container mt-6 flex md:flex md:flex-row flex-col items-center justify-center md:space-x-1 pb-3 md:pb-0 navigation-menu hidden">
+      <div>
+        <a href="#" class="py-1 px-3">
+          {navItems.map((item) => (
+            <a href={item.link} class="px-2 py-2 transition hover:text-blue-500">{item.title}</a>
+          ))}
+        </a>
+      </div>
+    </div>
+    <ToggleTheme class="ml-auto" />
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mobileMenuButton = document.querySelector(".mobile-menu-button");
+    const mobileMenu = document.querySelector(".navigation-menu");
+
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+    }
+  });
+</script>

@@ -5,23 +5,18 @@ import MoonIcon from "./icons/Moon.astro";
 
 <div class="relative ml-1 mr-1 px-2 py-2">
   <label class="inline-flex items-center cursor-pointer">
-    <input
-      type="checkbox"
-      value=""
-      class="sr-only peer"
-      id="theme-toggle-checkbox"
-    />
+    <input type="checkbox" class="sr-only peer" id="themes-menu" />
 
     <div
       class="relative w-16 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-8 rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] border after:absolute after:top-[2px] border-gray-400 after:start-[6px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
     >
       <MoonIcon
         id="dark"
-        class="theme-toggle-icon absolute size-5 ml-1 mt-0.5 transition-all"
+        class="themes-menu-icon absolute size-5 ml-1 mt-0.5 transition-all"
       />
       <SunIcon
         id="light"
-        class="theme-toggle-icon ml-9 mt-0.5 absolute size-5 transition-all"
+        class="themes-menu-icon ml-9 mt-0.5 absolute size-5 transition-all"
       />
     </div>
   </label>
@@ -50,7 +45,6 @@ import MoonIcon from "./icons/Moon.astro";
   let remove = null;
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
   const themesMenu = document.getElementById("themes-menu");
-
   const getThemePreference = () => {
     if (typeof localStorage !== "undefined") {
       return localStorage.getItem("theme") ?? "system";
@@ -90,12 +84,10 @@ import MoonIcon from "./icons/Moon.astro";
 
   document.addEventListener("click", () => themesMenu.classList.remove("open"));
 
-  document
-    .getElementById("theme-toggle-checkbox")
-    .addEventListener("click", (e) => {
-      localStorage.setItem("theme", e.target.checked ? "dark" : "light");
-      updateTheme();
-    });
+  document.getElementById("themes-menu").addEventListener("click", (e) => {
+    localStorage.setItem("theme", e.target.checked ? "dark" : "light");
+    updateTheme();
+  });
 
   document.querySelectorAll(".themes-menu-option").forEach((element) => {
     element.addEventListener("click", (e) => {
@@ -103,4 +95,5 @@ import MoonIcon from "./icons/Moon.astro";
       updateTheme();
     });
   });
+  console.log("se");
 </script>
